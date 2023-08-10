@@ -56,6 +56,10 @@ for(i = 0; i < 5; i++) {
     console.log('Game #' + (i + 1));
     
     let playerSelection = prompt(msgPrompt);
+    if(!playerSelection) {
+        console.log('No response... exiting game');
+        break;
+    }
     let computerSelection = getComputerChoice();
     let result = playGame(playerSelection, computerSelection);
     
