@@ -50,20 +50,44 @@ function playGame(playerSelection, computerSelection) {
     
 }
 
-let msgPrompt = "Rock, paper, or scissors?";
+function initiateGame() {
 
-for(i = 0; i < 5; i++) {
+
+    let msgPrompt = "Rock, paper, or scissors?";
+
+
     console.log('Game #' + (i + 1));
-    
+        
     let playerSelection = prompt(msgPrompt);
     if(!playerSelection) {
         console.log('No response... exiting game');
-        break;
+        return;
     }
     let computerSelection = getComputerChoice();
     let result = playGame(playerSelection, computerSelection);
-    
+
     console.log(result);
+
 }
 
-
+// Get all of the button elements in the div with the playButtons class
+const buttons = document.querySelectorAll("div.playButtons button");
+const elResult = document.querySelector("#result");
+// Add click event to buttons
+buttons.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        if(1==2) {
+            // this, in this context, is the button element
+            // which is the thing the action/event is being called on
+            console.log(this);
+            console.log(event); 
+            console.log(event.target);
+        }
+        // Play the game with the selected option
+        const playerSelection = this.textContent;
+        const computerSelection = getComputerChoice();
+        const result = playGame(playerSelection, computerSelection);
+        
+        elResult.textContent = result;
+    })
+})
